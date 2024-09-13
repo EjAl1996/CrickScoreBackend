@@ -5,9 +5,14 @@ import com.cricketScore.api.services.CricketService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/api/matches")
 public class CricketController {
 
     private CricketService cricketService;
@@ -27,7 +32,7 @@ public class CricketController {
         return new ResponseEntity<>(this.cricketService.getCWC2024PointTable(), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/all-matches")
     public ResponseEntity<List<Match>> getAllMatches() {
         return new ResponseEntity<>(this.cricketService.getAllMatch(), HttpStatus.OK);
     }
